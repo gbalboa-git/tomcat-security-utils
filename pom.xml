@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.balvigu.secure</groupId>
+  <artifactId>tomcat-security-utils</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  <name>tomcat-security-utils</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+    <tomcat-version>9.0.41</tomcat-version>
+    <java.version>11</java.version> 
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
+
+  <dependencies>    
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <version>${tomcat-version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jdbc</artifactId>
+      <version>${tomcat-version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <pluginManagement>
+      <plugins>                
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+          <configuration>
+            <!--finalName>balvigu-${project.name}-1.0</finalName-->
+            <archive>
+              <manifest>
+                <addClasspath>false</addClasspath>                
+                <mainClass>
+                  org.balvigu.crypto.Cryptor
+                </mainClass>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>        
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
